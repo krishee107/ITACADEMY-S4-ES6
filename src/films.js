@@ -55,8 +55,32 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, category) {
+  let cont = 0;
+  let result = array.reduce((sum, movie) =>{
+    //Buscamos el genero
+    for (let i = 0; i < movie.genre.length; i++) {
+      //Si tiene el genero que queremos...
+      if(movie.genre[i] == category){
+        //Comprobamos si tiene score, sumamos uno al contador y sumamos la puntuación
+        if(movie.score){
+          cont ++;
+          return sum + movie.score;      
+        } 
+        //No sumamos nada porque no tiene score 
+        else return sum;  
+      }
+      //Devolvemos el score
+      else return sum;
+    }
+  }, 0)
 
+  //Si tiene decimales redondeamos a 2 decimales
+  if( Math.round(result/cont) != average)
+    return parseFloat((result/cont).toFixed(2))
+  //Si no los tiene lo pintamos directamente
+  else
+    return average;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
