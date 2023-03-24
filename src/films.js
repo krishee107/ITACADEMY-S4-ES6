@@ -75,10 +75,9 @@ function moviesAverageByCategory(array, category) {
     }
   }, 0)
 
-  //Si tiene decimales redondeamos a 2 decimales
-  if( Math.round(result/cont) != average)
-    return parseFloat((result/cont).toFixed(2))
-  //Si no los tiene lo pintamos directamente
+  let average = result/cont;
+  if( Math.round(average) != average)
+    return parseFloat((average).toFixed(2))
   else
     return average;
 }
